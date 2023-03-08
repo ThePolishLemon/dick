@@ -1,0 +1,22 @@
+# Use an unofficial archlinux image bcz the official one doesn't support arm
+FROM agners/archlinuxarm:latest
+
+# Update the repositories
+RUN pacman -Sy
+# Install the necessary packages
+RUN pacman -S --noconfirm git tar glibc community/nodejs community/npm openssl gcc gcc-libs
+# Make dick Directories
+RUN  mkdir /app && mkdir /app/dick && mkdir /app/ass
+COPY . /app/dick
+RUN  cd /app/dick
+# Check if npm and node installed and are working correctly
+RUN npm --version
+RUN node --version
+# Set workdir
+WORKDIR /app/dick
+# Install npm packages
+RUN npm i
+
+# Expose port
+EXPOSE     3000
+                                                                                                                                                                                                                                                                            
